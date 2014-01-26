@@ -2,10 +2,14 @@
         
         <!-- sidebar -->
         
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Link 1</a></li>
-              <li><a href="#">Link 2</a></li>
-              <li><a href="#">Link 3</a></li>              
+            <ul class="nav sidebar">
+              <% if current_user%>
+              <li class="topo"><a href="" class="">Home</a></li>
+              <li><a href="#" class="">Link 1</a></li>
+              <li><a href="#" class="">Link 2</a></li>
+              <li><a href="#" class="">Link 3</a></li>
+              <%else%>
+              <li class="topo"><%= link_to "Logar", omniauth_authorize_path(resource_name, "facebook"), class: "btn btn-default" %></li>
+              <%end%>
             </ul>
        
