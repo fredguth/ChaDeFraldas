@@ -12,9 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap.min
 //= require jquery.nested-fields
 //= require jquery_nested_form
 //= require select2
 //= require_tree .
 
+$(document).ready(function() {
+        $('[data-toggle=offcanvas]').click(function() {
+          $('.row-offcanvas').toggleClass('active');
+        });
+      });

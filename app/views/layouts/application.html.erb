@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <%= render "layouts/header" unless @skip_head %>
-  <!--<body id="<%= @current_page %>" class="<%= @body_class %>">-->
-  <body>
+  
+  <body id="<%= @current_page %>">
+
   <div class="page-container">
     <%= render "layouts/menu" unless @skip_menu %> 
       <% if @skip_format %>
@@ -21,23 +22,11 @@
           </div>
         </div>
       <% end %>
-      <!--<%= render "layouts/footer" %>-->
+     <%= render "layouts/footer" %>
     
     <%= yield :scripts %>
-<!-- limpar linhas abaixo -->
-    <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <!-- JavaScript jQuery code from Bootply.com editor -->
 
-    <script type='text/javascript'>
 
-      $(document).ready(function() {
-        $('[data-toggle=offcanvas]').click(function() {
-          $('.row-offcanvas').toggleClass('active');
-        });
-      });
-        
-        </script>
   </div>
   </body>
 </html>
