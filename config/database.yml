@@ -1,0 +1,20 @@
+development:
+    adapter: postgresql
+    database: cf-dev
+    username: fredguth
+    password:
+    encoding: UTF8
+
+test:
+    adapter: postgresql
+    database: cf-test
+    username: fredguth
+    password:
+    encoding: UTF8
+
+production:
+      adapter: postgresql
+      database: cf-production
+      username: fredguth
+      password:
+      encoding: UTF8

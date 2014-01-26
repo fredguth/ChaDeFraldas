@@ -1,0 +1,22 @@
+<div id="footer">
+	<div class="container pull-down">
+	
+				<ul class="nav nav-pills">
+					<%= content_tag(:li, link_to("Home", root_path),
+										class: active(root_path)) %>
+					<%= content_tag(:li, link_to("Sobre o Blogs de Mãe", about_path),
+										class: active(about_path)) %>
+					<%= content_tag(:li, link_to("Termos de Uso", terms_path),
+										class: active(terms_path)) %>
+					<%= content_tag(:li, link_to("Política de Privacidade", privacy_path),
+										class: active(privacy_path)) %>
+					<%= content_tag(:li, link_to("Contato", contact_path),
+										class: active(contact_path)) %>
+				</ul>
+			
+		
+				<div class="pull-right"><p><div class="copywrite">Chá de Fraldas Virtual, um produto <a href="http://www.taosimples.com.br">Tão Simples</a>.    Todos os direitos reservados.    &copy; Tão Simples 2014.</div></p></div>
+			
+	
+	</div>
+</div><!-- footer -->

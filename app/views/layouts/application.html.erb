@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <%= render "layouts/header" unless @skip_head %>
+  <body id="<%= @current_page %>" class="<%= @body_class %>">
+    <%= render "layouts/menu" unless @skip_menu %> 
+      <% if @skip_format %>
+        <%= yield %>
+      <% else %>
+        <div class="main-container" id="<%= @current_page %>"> 
+          <div class="container">
+          <div class="row row-offcanvas row-offcanvas-left"> 
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+              <%= render "layouts/sidebar" %>
+            </div>
+            <div class="col-xs-12 col-sm-9">
+              <%= yield %>
+            </div>
+          </div>
+          </div>
+        </div>
+      <% end %>
+      <%= render "layouts/footer" %>
+    
+    <%= yield :scripts %>
+<!-- limpar linhas abaixo -->
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  </body>
+</html>
