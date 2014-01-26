@@ -18,12 +18,3 @@
 //= require select2
 //= require_tree .
 
-// $(document).ready(function(e) {
-//   $('FORM').nestedFields();
-// });
-
-$(document).ready(function() {
-  $('[data-toggle=offcanvas]').click(function() {
-    $('.row-offcanvas').toggleClass('active');
-  });
-});
