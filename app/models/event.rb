@@ -4,5 +4,6 @@ class Event < ActiveRecord::Base
   has_many :contributors, :through => :contributions,  :class_name => "User"
   has_many :invitations
   has_many :invitees, :through => :invitations, :class_name => "User"
-  has_many :options, :class_name =>"Products"
+  has_many :options, :class_name =>"Product"
+
 end

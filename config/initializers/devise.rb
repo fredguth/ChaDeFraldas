@@ -4,9 +4,8 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  #config.secret_key = '73b7aab643d1ed57f1452b32a3c3bcd22fae416df58d52eace1268274dea3ca02229ff35431531782b26ee77cf39b6f28519d25df9f6816cfcd69fe610dbf6fe'
-  config.secret_key = 'e046f683fa4d450d89af18d15e9ac9e03ff53ecdb446303b87ca3f358706d7fe822526204998060a7027e2197f824240527c40aa2706f22dd7cc0746acddb878'
-  
+  config.secret_key = 'd30d7175d36480be967ef379c30dd1cd1380647ccb3538ee0197f9a1bc282297c555cbea580b07f5d709b5cb1c602ff79551bb605fa5cc1cc05cf54acc094c03'
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -96,7 +95,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'c25579523bffcb628c3a3f991e221618759c7434b3993abc9e616a1a55dfe360fa84e1ded6bfd4038812353122a919a7a9e1345d661dda3fef1df4f43aea449d'
+  # config.pepper = 'df7874c2a13ae17f9706113d7cd0dc358ea49ca04d3645710fd12769b5f45ae8dbe3b25db589b57498bda6324c339f03496c9b372f49c37d7f726b499be39d04'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -231,7 +230,6 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   require "omniauth-facebook"
   config.omniauth :facebook, '201120573427888', '41033d5421e0cf418e0b29f1e05c82db', :scope =>'email, publish_stream'
-  #config.omniauth :facebook, '243639752475918', '72fdbe8a20ceb0db8092d0b8f92cfa3e', :scope =>'email, friends_likes, user_likes'
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
