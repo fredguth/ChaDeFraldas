@@ -67,6 +67,15 @@ def get_friends_who_like(page)
   end 
 end
 
+def get_picture(options={})
+  options[:type]||="square"
+  self.facebook.get_picture('me', { :type => options[:type]})
+
+end
+def get_gender
+  self.facebook.get_object('me')["gender"]
+end
+
 def self.share_blog_registration(user_id, blog_url)
   user = User.find(user_id)
   user.facebook.put_connections("me", "blogsdemae:register", blog: blog_url)

@@ -21,8 +21,12 @@ module ChaDeFraldas
      config.i18n.default_locale = :'pt-BR'
      config.assets.paths << "#{Rails}/vendor/assets/fonts"
      config.assets.initialize_on_precompile=false
-     config.action_dispatch.default_headers = {
-    'X-Frame-Options' => 'ALLOWALL'
+    #  config.action_dispatch.default_headers = {
+    # 'X-Frame-Options' => 'ALLOWALL'
+    # }
+    config.action_dispatch.default_headers = {
+        'X-XSS-Protection' => '1; mode=block',
+        'X-Content-Type-Options' => 'nosniff'
     }
    
   end

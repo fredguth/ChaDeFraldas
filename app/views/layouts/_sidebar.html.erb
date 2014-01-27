@@ -4,10 +4,26 @@
         
             <ul class="nav sidebar">
               <% if current_user%>
-              <li class="topo"><a href="" class="">Home</a></li>
-              <li><a href="#" class="">Link 1</a></li>
-              <li><a href="#" class="">Link 2</a></li>
-              <li><a href="#" class="">Link 3</a></li>
+              <li class="topo">
+              	<a href="#{path_for(current_user)}">
+              	<div class="row">
+              	<div class="col-xs-6">
+              	<%= image_tag(current_user.get_picture(type:"normal"),class: "img-circle") %>
+              	</div>
+              	<div class="col-xs-6 greeting">
+              		<p>Olá, <%= current_user.first_name %></p>
+              		<% if current_user.get_gender=="male" %>
+              		<p>Seja bem-vindo!</p>
+              		<%else%>
+              		<p>Seja bem-vinda!</p>
+              		<%end%>
+              	</div>
+
+              	</div>
+              	</a>
+              </li>
+              <li><a href="#" class=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Minha Conta</a></li>
+              <li><a href="#" class=""><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;Criar Chá de Fraldas</a></li>
               <%else%>
               <li class="topo"><%= link_to "Logar", omniauth_authorize_path(resource_name, "facebook"), class: "btn btn-default" %></li>
               <%end%>

@@ -1,4 +1,12 @@
-
+/* Override Bootstrap 3 font locations */
+@font-face {
+font-family: 'Glyphicons Halflings';
+src: url('/assets/glyphicons-halflings-regular.eot');
+src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+url('/assets/glyphicons-halflings-regular.woff') format('woff'), 
+url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), 
+url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
 
 
 /** 
@@ -50,6 +58,11 @@ border-color: lightgray;
 
 }
 
+.miniavatar{
+  left: -60px;
+float: left;
+top: -15px;
+}
 .nav>li>a {
 background-color: white;
 }
@@ -74,6 +87,9 @@ border-top-right-radius: 5px;
   height: 50px;
 }
  
+ .greeting{
+  padding-top:25px;
+ }
 .text-center {
   padding-top: 20px;
 }
