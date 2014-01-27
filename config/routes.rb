@@ -1,6 +1,14 @@
 ChaDeFraldas::Application.routes.draw do
  
 
+  resources :invitations
+
+  resources :products
+
+  resources :contributions
+
+  resources :events
+
   match "about", to: 'info#about', via: [:get, :post]
   match "terms", to: 'info#terms', via: [:get, :post]
   match "privacy", to: 'info#privacy', via: [:get, :post]

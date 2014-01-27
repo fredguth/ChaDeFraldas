@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  welcome_message: MyText
+  thankyou_message: MyText
+  is_open: false
+  user_id: 
+
+two:
+  name: MyString
+  welcome_message: MyText
+  thankyou_message: MyText
+  is_open: false
+  user_id: 

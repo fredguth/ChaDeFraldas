@@ -15,6 +15,11 @@ url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') form
 
 @brand-primary:#f78d1e; 
 
+.page-container{
+   min-height:100%;
+   position:relative;
+}
+
 .omnes (@size: inherit) {
         font-family: "omnes-pro", serif;
         font-size: @size;    
@@ -26,8 +31,8 @@ h1,h2,h3,h4,h5,h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 500;
 }
 
-b, strong {
-  text-weight:400;
+b, strong, label {
+  font-weight:600;
 }
 p, a{
         .omnes;
@@ -47,6 +52,7 @@ body {
         .omnes(13px);
         background: white image-url("bg.gif") top left repeat;
         padding-top:51px;
+        height:100%;
 }
 
 /** 
@@ -98,6 +104,7 @@ border-top-right-radius: 5px;
   margin-top: 20px;
   border-radius: 5px;
   padding-left: 40px;
+  padding-bottom: 20px;
   margin-bottom: 50px;
 }
 #sidebar {
@@ -183,9 +190,11 @@ padding-top: 0;
        FOOTER   
  **/
 #footer{
+  position:absolute;
 	border-top: 1px solid #e0e0e0;
 	padding: 10px;
   background-color: white;
+  width:100%;
 }
 .nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus
 {

@@ -3,7 +3,7 @@
  <div class="container">
 		<div class="navbar-header">
            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
-            <span style="position:relative;float:left;top:-20px;left:-60px;"><%= image_tag(current_user.get_picture(type:"square"),class: "img-circle") %></span>
+            <span style="position:relative;float:left;top:-20px;left:-60px;"><%= image_tag(current_user.get_picture(type:"square"),class: "img-circle") if current_user%></span>
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
