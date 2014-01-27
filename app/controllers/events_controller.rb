@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!,only: [:create, :edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -14,7 +15,9 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    session[:event_params] ||= {}
+    @event = Event.new(session[:event_params])
+    @event.current_step = session[:event_step]
   end
 
   # GET /events/1/edit
@@ -25,7 +28,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
+    @event.user_id = current_user.id
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -36,7 +39,29 @@ class EventsController < ApplicationController
       end
     end
   end
-
+  def create
+  session[:event_params].deep_merge!(params[:event]) if params[:event]
+  @event = Event.new(session[:event_params])
+  @event.user_id = current_user.id
+  @event.current_step = session[:event_step]
+  if @event.valid?
+    if params[:back_button]
+      @event.previous_step
+    elsif @event.last_step?
+      @event.save if @event.all_valid?
+    else
+      @event.next_step
+    end
+    session[:event_step] = @event.current_step
+  end
+  if @event.new_record?
+    render 'new'
+  else
+    session[:event_step] = session[:order_params] = nil
+    flash[:notice] = "Event saved."
+    redirect_to @event
+  end
+end
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update

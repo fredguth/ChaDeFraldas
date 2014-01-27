@@ -1,8 +1,21 @@
 <div class="center"><div class="wizard">
-    <a><span class="badge">1</span> Informar Dados</a>
-    <a><span class="badge">2</span> Escolher Produtos</a>
-    <a class="current"><span class="badge badge-inverse">3</span> Convidar Amigos</a>
+    <% if @event.inform? %>
+      <a class="current"><span class="badge badge-inverse">1</span>
+    <%else%>
+      <a><span class="badge">1</span>
+    <%end%>Informar Dados</a>
+    <% if @event.choose? %>
+      <a class="current"><span class="badge badge-inverse">2</span>
+    <%else%>
+      <a><span class="badge">2</span>
+    <%end%>Escolher Produtos</a>
+    <% if @event.invite? %>
+      <a class="current"><span class="badge badge-inverse">3</span>
+    <%else%>
+      <a><span class="badge">3</span>
+    <%end%>Convidar Amigos</a>
 </div></div>
+
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -15,28 +28,12 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="center">
+      <%= render "#{@event.current_step}_step", :f => f %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <p><%= f.submit "Continue" %></p>
+      <p><%= f.submit "Back", :name => "previous_button" %></p>
   </div>
-  <div class="field">
-    <%= f.label :welcome_message %><br>
-    <%= f.text_area :welcome_message %>
-  </div>
-  <div class="field">
-    <%= f.label :thankyou_message %><br>
-    <%= f.text_area :thankyou_message %>
-  </div>
-  <div class="field">
-    <%= f.label :is_open %><br>
-    <%= f.check_box :is_open %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
