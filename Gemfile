@@ -71,6 +71,8 @@ gem 'delayed_job_active_record'
 
 gem 'rename'
 
+gem 'wicked'
+
 group :production do
   gem 'rails_12factor'
   gem 'rails-i18n'

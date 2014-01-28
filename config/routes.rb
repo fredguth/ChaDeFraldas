@@ -7,7 +7,8 @@ ChaDeFraldas::Application.routes.draw do
 
   resources :contributions
 
-  resources :events
+  resources :events 
+  resources :event_steps
 
   match "about", to: 'info#about', via: [:get, :post]
   match "terms", to: 'info#terms', via: [:get, :post]

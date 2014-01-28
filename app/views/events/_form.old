@@ -1,0 +1,54 @@
+<!--<div class="center">
+    <div class="wizard">
+      <% if @event.inform? %>
+        <a class="current"><span class="badge badge-inverse">1</span>
+      <%else%>
+        <a><span class="badge">1</span>
+      <%end%>Informar Dados</a>
+      <% if @event.choose? %>
+        <a class="current"><span class="badge badge-inverse">2</span>
+      <%else%>
+        <a><span class="badge">2</span>
+      <%end%>Escolher Produtos</a>
+      <% if @event.invite? %>
+        <a class="current"><span class="badge badge-inverse">3</span>
+      <%else%>
+        <a><span class="badge">3</span>
+      <%end%>Convidar Amigos</a>
+    </div> 
+
+<%= form_for @event, html:{class:"form-horizontal",role:"form"} do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  
+      <%= render "event_steps/inform", :f => f %>
+     <!--  <div class="row">
+        <div class="pull-left">
+          <%= button_tag(type: "submit", :name => "back_button",
+                                          class: "btn btn-default") do %>
+              <i class="glyphicon glyphicon-chevron-left"></i> Voltar 
+              <% end %>
+          
+        </div>
+        <div class="pull-right">
+              <%= button_tag(type: "submit", class: "btn btn-success") do %>
+              Prosseguir <i class="glyphicon glyphicon-chevron-right"></i>
+              <% end %>
+        </div>
+      </div>
+       
+ 
+
+<% end %>
+</div>
+-->

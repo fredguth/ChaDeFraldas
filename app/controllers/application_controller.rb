@@ -4,5 +4,10 @@ class ApplicationController < ActionController::Base
   #comentei a linha abaixo por conta do Facebook
   #protect_from_forgery with: :exception
 
+private
 
+  def current_event
+    @current_event ||= Event.find_by_id(session[:event_id]) if session[:event_id]
+  end
+  helper_method :current_user
 end

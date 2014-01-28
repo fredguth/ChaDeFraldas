@@ -1,39 +1,34 @@
-<div class="center"><div class="wizard">
-    <% if @event.inform? %>
-      <a class="current"><span class="badge badge-inverse">1</span>
-    <%else%>
-      <a><span class="badge">1</span>
-    <%end%>Informar Dados</a>
-    <% if @event.choose? %>
-      <a class="current"><span class="badge badge-inverse">2</span>
-    <%else%>
-      <a><span class="badge">2</span>
-    <%end%>Escolher Produtos</a>
-    <% if @event.invite? %>
-      <a class="current"><span class="badge badge-inverse">3</span>
-    <%else%>
-      <a><span class="badge">3</span>
-    <%end%>Convidar Amigos</a>
-</div></div>
+<%= form_for @event do |f| %>
 
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'event_steps/error_msgs'%>
+  <%= render 'event_steps/wizard', step: "inform" %>
+  <div class="form-group">
+        <%= f.label :name , "Dê um nome para seu Chá de Fraldas" %>
+        <%= f.text_field :name, :class=>"form-control col-sm-12" %>
+        <p class="help-inline">ex. "Chá de Fraldas do Joaquim"</p>
+  </div> <!-- form group -->
   
-  <div class="center">
-      <%= render "#{@event.current_step}_step", :f => f %>
-
-      <p><%= f.submit "Continue" %></p>
-      <p><%= f.submit "Back", :name => "previous_button" %></p>
+  <div class="form-group">
+    <%= f.label :welcome_message , "Insira uma mensagem de boas vindas"%><br>
+    <%= f.text_area :welcome_message, :class=>"form-control col-sm-12", :type=>"text/html",rows: "3"  %>
+    <p class="help-inline">ex. "Bem-vinda ao Chá de Fraldas do Joaquim."</p>
   </div>
 
-<% end %>
+
+  <div class="form-group">
+    <%= f.label :thankyou_message , "Insira uma mensagem de agradecimento"%><br>
+    <%= f.text_area :thankyou_message, :class=>"form-control col-sm-12", :type=>"text/html",rows: "3" %>
+    <p class="help-inline">ex. "Obrigada por participar do Chá de Fraldas do Joaquim."</p>
+  </div>
+
+  <div class="row">
+ 
+        <div class="pull-right">
+              <%= button_tag(type: "submit", class: "btn btn-success") do %>
+              Prosseguir <i class="glyphicon glyphicon-chevron-right"></i>
+              <% end %>
+        </div>
+     </div>
+<%end%>
+
+ 
