@@ -1,29 +1,56 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<h1><%=@event.name%></h1>
 
-<p>
-  <strong>Welcome message:</strong>
-  <%= @event.welcome_message %>
-</p>
+<div class="row">
+  <div class="col-sm-8"><p class="triangle-isosceles right"><%=@event.welcome_message%></p></div>
+  <div class="col-sm-2"> 
+  <p><%= image_tag @event.user.get_picture(type:"normal"),class: "img-circle" %></p>
+  <p style='text-align:center;'><%= @event.user.name %></div></p>
+  <div class="col-sm-2"></div>
+</div>
+<hr>
+<h3>Opções selecionadas <%if @event.user.get_gender=="male"%>pelo<%else%>pela<%end%> <%= @event.user.first_name %></h3>
+<div class="well">
+	<div class="row">
+		<div class="col-sm-4 border_right centralize">
+			<h4>Opção 1</h4>
+			<%= image_tag "produto1.png", class: "produto" %>
+			<p>1 pacote jumbo com 48 fraldas. 2 dias de consumo de fraldas.</p>
+			<p class="price">R$29,90</p>
+			<p><%= link_to "#", class:"btn btn-success" do %>
+              <i class="glyphicon glyphicon-heart"></i> Contribuir 
+              <% end %></p>
+		</div>
+		<div class="col-sm-4 border_right centralize">
+			<h4>Opção 2</h4>
+			<%= image_tag "produto1.png", class: "produto" %>
+			<p>2 pacote jumbo com 48 fraldas. 2 dias de consumo de fraldas.</p>
+			<p class="price">R$59,90</p>
+			<p><%= link_to "#", class:"btn btn-success" do %>
+              <i class="glyphicon glyphicon-heart"></i> Contribuir 
+              <% end %></p>
+		</div>
+		<div class="col-sm-4 centralize">
+			<h4>Opção 3</h4>
+			<%= image_tag "produto1.png", class: "produto" %>
+			<p>3 pacote jumbo com 48 fraldas. 2 dias de consumo de fraldas.</p>
+			<p class="price">R$99,90</p>
+			<p><%= link_to "#", class:"btn btn-success" do %>
+              <i class="glyphicon glyphicon-heart"></i> Contribuir 
+              <% end %></p>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>Thankyou message:</strong>
-  <%= @event.thankyou_message %>
-</p>
-
-<p>
-  <strong>Is open:</strong>
-  <%= @event.is_open %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @event.user %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<hr>
+<h3>Amigos que já contribuiram</h3>
+<p><%= image_tag @event.user.get_picture(type:"small"),class: "img-circle" %>
+<span class="contributor">Renata Fernandes:</span> Contribuiu com 2 pacotes hiper Turma da Mônica</p>
+<p><%= image_tag @event.user.get_picture(type:"small"),class: "img-circle" %>
+<span class="contributor">Marina Lima:</span> Contribuiu com 1 pacotes hiper Turma da Mônica</p>
+<p><%= image_tag @event.user.get_picture(type:"small"),class: "img-circle" %>
+<span class="contributor">Roberta Fagundes:</span> Contribuiu com 3 pacotes hiper Turma da Mônica</p>
+<p><%= image_tag @event.user.get_picture(type:"small"),class: "img-circle" %>
+<span class="contributor">Lilian Ribeiro:</span> Contribuiu com 2 pacotes hiper Turma da Mônica</p>
+<p><%= image_tag @event.user.get_picture(type:"small"),class: "img-circle" %>
+<span class="contributor">Jorge Raffi:</span> Contribuiu com 2 pacotes hiper Turma da Mônica</p>
