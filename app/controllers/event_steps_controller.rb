@@ -10,6 +10,12 @@ include Wicked::Wizard
   def update
 	  @event = current_event
 	  @event.update_attributes(params[:event])
+    Product.all.each do |p|
+      if params[p.id+"-item"] 
+        @event.products << p
+      end
+    end
+    @event.save
 	  render_wizard @event
   end
 

@@ -1,0 +1,77 @@
+<hr>
+<div class="row">
+	<div class="col-sm-8">
+		<h4><%= event.name %></h4>
+		<small><%= link_to "#{event_url}", event_url %></small>
+	</div>
+	
+		<% if event.is_open %>
+			<div class="col-sm-2">
+				<div class="status_open"><%= "Aberto" %></div>
+			</div>
+			<div class="col-sm-2">
+				<%= link_to "Fechar", event, class: "btn btn-default"%>
+			</div>
+			<%else%>
+			<div class="col-sm-4">
+				<div class="status_closed"><%= "Fechado" %></div>
+			</div>
+		<%end%>
+	
+</div>
+
+	<div class="well">
+		<div class="row">
+			<div class="col-sm-4 centralize">
+				<p class="bignumber">131</p>
+				<p>Amigos convidados</p>
+			</div>
+			<div class="col-sm-4 centralize">
+				<p class="bignumber">52</p>
+				<p>Amigos contribuiram</p>
+			</div>
+			<div class="col-sm-4 centralize">
+				<p class="bignumber">R$2.560</p>
+				<p>Valor arrecadado</p>
+			</div>
+		</div>
+	</div>
+	<div class="pushright">
+	<h5>Extrato</h5>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td>20h06</td>
+					<td>25/01/14</td>
+					<td>
+						<%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small" %>
+					</td>
+					<td>Marina Lima</td>
+					<td>contribuiu com</td>
+					<td style="text-align:right;">R$ 45,90</td>
+				</tr>
+				<tr>
+					<td>15h46</td>
+					<td>25/01/14</td>
+					<td>
+						<%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small" %>
+					</td>
+					<td>Fernando Serpa</td>
+					<td>contribuiu com</td>
+					<td style="text-align:right;">R$ 89,90</td>
+				</tr>
+				<tr>
+					<td>12h01</td>
+					<td>25/01/14</td>
+					<td>
+						<%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small" %>
+					</td>
+					<td>Marcia Garcia</td>
+					<td>contribuiu com</td>
+					<td style="text-align:right;">R$ 69,90</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+

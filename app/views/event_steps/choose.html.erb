@@ -3,6 +3,45 @@
   <%= render 'event_steps/error_msgs'%>
   <%= render 'event_steps/wizard', step: "choose" %>	
   
+  <h3>Escolha 3 opções de contribuição</h3>
+  <div class="row">
+    <% Product.all.each do |product|%>
+      <div class="product centralize">
+        <h4><%= product.name %></h4>
+        <%= image_tag product.image_url, class: "produto" %>
+        <p><%= product.description %></p>
+        <p class="price"><%= number_to_currency(product.value)%></p>
+        <input class="product-item" type="checkbox" id="<%=product.id%>-item" checked="false" style="display:none;" />
+
+        <p><%= link_to("#", class: "btn btn-success",id: product.id) do %>
+              Escolher</i>
+              <% end %></p>
+
+
+      </div>
+    <%end%>
+  </div>
+  <div style="padding-bottom:40px;"></div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<div class="row">
  		<div class="pull-left">

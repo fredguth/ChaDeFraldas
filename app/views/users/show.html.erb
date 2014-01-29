@@ -1,1 +1,10 @@
-oi
+<h1><%= current_user.name %></h1>
+
+<h3>Meus Chás de Fraldas</h3>
+
+<% current_user.events.each do |event|%>
+	<%= render 'event_sumary', event: event %>
+<%end%>	
+
+<h3>Minhas contribuições em Chás de Fraldas de Amigos</h3>
+	<%= render 'my_contributions' %>

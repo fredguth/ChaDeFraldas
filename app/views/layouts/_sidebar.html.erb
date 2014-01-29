@@ -22,7 +22,7 @@
               	</div>
               	<% end %>
               </li>
-              <li><a href="#" class=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Minha Conta</a></li>
+              <li><%= link_to current_user do %><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Minha Conta<%end%></li>
               <li><%=link_to new_event_path do %>
               <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;Criar Chá de Fraldas<%end%></li>
               <%else%>

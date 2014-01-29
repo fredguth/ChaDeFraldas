@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   validates_presence_of :email
   validates_uniqueness_of :email
-  
+  has_many :events
   attr_accessible :get_friends_who_like
 
 def self.from_omniauth(auth)
