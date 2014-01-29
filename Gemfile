@@ -29,7 +29,7 @@ gem 'nested_form'
 
 gem 'seed_dump'
 gem "select2-rails"
-
+gem 'skeuocard-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

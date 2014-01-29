@@ -18,29 +18,12 @@
 			<%= image_tag p.image_url, class: "produto" %>
 			<p><%= p.description %></p>
 			<p class="price"><%= number_to_currency(p.value) %></p>
-			<p><%= link_to "#", class:"btn btn-success" do %>
+			<p><%= link_to new_contribution_path(:user_id =>current_user.id, :event_id =>@event.id, :product_id =>p.id), class:"btn btn-success" do %>
               <i class="glyphicon glyphicon-heart"></i> Contribuir 
               <% end %></p>
 		</div>
 		<%end%>
-		<!-- <div class="col-sm-4 border_right centralize">
-			<h4>Opção 2</h4>
-			<%= image_tag "produto1.png", class: "produto" %>
-			<p>2 pacote jumbo com 48 fraldas. 2 dias de consumo de fraldas.</p>
-			<p class="price">R$59,90</p>
-			<p><%= link_to "#", class:"btn btn-success" do %>
-              <i class="glyphicon glyphicon-heart"></i> Contribuir 
-              <% end %></p>
-		</div>
-		<div class="col-sm-4 centralize">
-			<h4>Opção 3</h4>
-			<%= image_tag "produto1.png", class: "produto" %>
-			<p>3 pacote jumbo com 48 fraldas. 2 dias de consumo de fraldas.</p>
-			<p class="price">R$99,90</p>
-			<p><%= link_to "#", class:"btn btn-success" do %>
-              <i class="glyphicon glyphicon-heart"></i> Contribuir 
-              <% end %></p>
-		</div> -->
+		
 	</div>
 </div>
 

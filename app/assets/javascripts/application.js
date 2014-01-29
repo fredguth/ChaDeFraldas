@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require skeuocard
 //= require bootstrap.min
 //= require jquery.nested-fields
 //= require jquery_nested_form

@@ -1,5 +1,6 @@
 class Contribution < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
-  has_one :product
+  belongs_to :product
+  attr_accessor :card_number, :holder, :expires_month, :expires_year, :cvc
 end

@@ -14,7 +14,11 @@ class ContributionsController < ApplicationController
 
   # GET /contributions/new
   def new
-    @contribution = Contribution.new
+    @current_page = "contribution"
+    @contribution = Contribution.new(params[:contribution])
+    @contribution.user_id = params[:user_id]
+    @contribution.event_id = params[:event_id]
+    @contribution.product_id = params[:product_id]
   end
 
   # GET /contributions/1/edit
@@ -24,9 +28,8 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
-    @contribution = Contribution.new(contribution_params)
-
-    respond_to do |format|
+    @contribution = Contribution.new(params[:contribution])
+     respond_to do |format|
       if @contribution.save
         format.html { redirect_to @contribution, notice: 'Contribution was successfully created.' }
         format.json { render action: 'show', status: :created, location: @contribution }
@@ -41,7 +44,7 @@ class ContributionsController < ApplicationController
   # PATCH/PUT /contributions/1.json
   def update
     respond_to do |format|
-      if @contribution.update(contribution_params)
+      if @contribution.update(params[:contribution])
         format.html { redirect_to @contribution, notice: 'Contribution was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,6 +72,6 @@ class ContributionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contribution_params
-      params.require(:contribution).permit(:user_id, :event_id)
+      params.require(:contribution).permit(:user_id, :event_id,:product_id)
     end
 end
