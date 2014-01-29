@@ -1,3 +1,16 @@
-FAILURE
-
-<%=link_to "tente de novo",new_contribution_path(params[:contribution])%>
+<h1>Opa! Algo aconteceu...</h1>
+<div class="row">
+  <div class="col-sm-8">
+  	<p class="triangle-isosceles right">
+  	Não foi possível efetuar a contribuição.
+  	Por favor, tente novamente.
+  	</p>
+  </div>
+  <div class="col-sm-2"> 
+  	<p><%= image_tag "caixa.png" %></p>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+<div class="row pull-right">
+<%=link_to "Tentar de Novo", new_contribution_path(params[:contribution]),class: "btn btn-default"%>
+</div>

@@ -32,11 +32,15 @@ class ContributionsController < ApplicationController
      respond_to do |format|
      if @contribution.purchase && @contribution.save
         format.html {
+         @current_page="success"
          render :action => "success",:params =>params[:contribution]
         }
         format.json { render action: 'show', status: :created, location: @contribution }
       else
-        format.html { render action: 'failure',:params =>params[:contribution] }
+        format.html {
+        @current_page="failure"
+        render action: 'failure',:params =>params[:contribution]
+        }
         format.json { render json: @contribution.errors, status: :unprocessable_entity }
       end
     end

@@ -3,7 +3,25 @@
   <%= render 'event_steps/error_msgs'%>
   <%= render 'event_steps/wizard', step: "invite" %>
   
-
+  <div class="row">
+    <div class="col-sm-6 centralize">
+      <a href="#" id="check-all" class="btn btn-default">Selecionar Todos</a>
+    </div>
+    <div class="col-sm-6 centralize">
+      <a href="#" id="uncheck-all" class="btn btn-default">Desmarcar Todos</a>
+    </div>
+  </div>
+  
+  <div class="friends_gallery">
+     <% current_user.get_friends.each do |friend|%>
+      <div class="friend">
+        <%= check_box_tag friend["uid"], true, class: "invitee-item"%>
+        <%= image_tag friend["pic_square"], class: "img-circle img-avatar" %>
+        <%= friend["name"] %>
+      </div>
+      <%end%>    
+  </div>
+<div style="margin-bottom:40px"></div>
 	<div class="row">
  		<div class="pull-left">
           <%= link_to previous_wizard_path, class:"btn btn-default" do %>
@@ -18,4 +36,5 @@
         </div>
      </div>
 <%end%>
+
 <%= link_to 'Voltar', events_path %>

@@ -55,6 +55,9 @@ def facebook
   @facebook||=Koala::Facebook::API.new(oauth_token)
 end
 
+def get_friends
+  self.facebook.fql_query("SELECT name, pic_square,uid FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1=me())")
+end
 
 def get_friends_who_like(page)
   q = "SELECT id FROM object_url WHERE url ='"+page+"'"

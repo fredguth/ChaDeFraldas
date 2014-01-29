@@ -5,8 +5,7 @@ class Contribution < ActiveRecord::Base
   attr_accessor :card_number, :holder, :expires_month, :expires_year, :cvc
 
   def purchase
-  	#[true, false].sample
-  	return false
+  	[true, false].sample
   end
 
 end

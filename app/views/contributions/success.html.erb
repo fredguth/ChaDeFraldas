@@ -1,3 +1,14 @@
-SUCCESS
-
-<%= link_to "prosseguir", event_path(params[:contribution][:event_id])%>
+<h1>Oba! Contribuição efetuada com sucesso!!!</h1>
+<div class="row">
+  <div class="col-sm-8"><p class="triangle-isosceles right">
+  	<% e = Event.find(params[:contribution][:event_id])%>
+  	<%= e.thankyou_message %>
+  </p></div>
+  <div class="col-sm-2"> 
+  <p><%= image_tag e.user.get_picture(type:"normal"),class: "img-circle" %></p>
+  <p style='text-align:center;'><%= e.user.name %></div></p>
+  <div class="col-sm-2"></div>
+</div>
+<div class="row pull-right">
+<%= link_to "Prosseguir", event_path(params[:contribution][:event_id]), class: "btn btn-success"%>
+</div>
