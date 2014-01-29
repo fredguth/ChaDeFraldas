@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @selection.event %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @selection.product %>
+</p>
+
+<%= link_to 'Edit', edit_selection_path(@selection) %> |
+<%= link_to 'Back', selections_path %>

@@ -11,12 +11,17 @@
         <%= image_tag product.image_url, class: "produto" %>
         <p><%= product.description %></p>
         <p class="price"><%= number_to_currency(product.value)%></p>
-        <input class="product-item" type="checkbox" id="<%=product.id%>-item" checked="false" style="display:none;" />
+        <%= hidden_field_tag "event[product_ids][]", nil %>
+        <%= check_box_tag "event[product_ids][]", product.id, @event.product_ids.include?(product.id),id: dom_id(product),class: "product-item" %>
+        <%= label_tag dom_id(product), "Escolher" %><br>
 
-        <p><%= link_to("#", class: "btn btn-success",id: product.id) do %>
+
+         <!-- <input class="product-item" type="checkbox" id="<%=product.id%>-item" checked="false" style="display:none;" />
+
+       <p><%= link_to("#", class: "btn btn-success",id: product.id) do %>
               Escolher</i>
               <% end %></p>
-
+ -->
 
       </div>
     <%end%>

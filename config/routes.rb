@@ -1,6 +1,8 @@
 ChaDeFraldas::Application.routes.draw do
  
 
+  resources :selections
+
   resources :invitations
 
   resources :products

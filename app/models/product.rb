@@ -1,3 +1,4 @@
 class Product < ActiveRecord::Base
-	 has_and_belongs_to :event
+	 has_many :selections
+	 has_many :events, :through => :selections
 end
