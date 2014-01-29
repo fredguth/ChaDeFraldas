@@ -85,4 +85,5 @@ def self.share_blog_edition(user_id, blog_url)
   user.facebook.put_connections("me", "blogsdemae:edit", blog: blog_url)
 end
 
+
 end

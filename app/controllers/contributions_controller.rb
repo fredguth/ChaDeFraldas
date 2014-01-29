@@ -30,11 +30,13 @@ class ContributionsController < ApplicationController
   def create
     @contribution = Contribution.new(params[:contribution])
      respond_to do |format|
-      if @contribution.save
-        format.html { redirect_to @contribution, notice: 'Contribution was successfully created.' }
+     if @contribution.purchase && @contribution.save
+        format.html {
+         render :action => "success",:params =>params[:contribution]
+        }
         format.json { render action: 'show', status: :created, location: @contribution }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'failure',:params =>params[:contribution] }
         format.json { render json: @contribution.errors, status: :unprocessable_entity }
       end
     end

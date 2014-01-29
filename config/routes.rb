@@ -1,6 +1,7 @@
 ChaDeFraldas::Application.routes.draw do
  
 
+  get "confirmations/show"
   resources :selections
 
   resources :invitations

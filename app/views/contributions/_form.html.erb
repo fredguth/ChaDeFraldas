@@ -1,68 +1,78 @@
 <%= form_for(@contribution) do |f| %>
-  <% if @contribution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+<% if @contribution.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
 
-      <ul>
-      <% @contribution.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <ul>
+    <% @contribution.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= f.text_field :user_id, style: "display:none;" %>
+<%= f.text_field :event_id, style: "display:none;" %>
+<%= f.text_field :product_id, style: "display:none;" %>
+
+<div class="row">
+  <div class="pull-right push-down">
+   <i class="glyphicon glyphicon-lock"></i>
+ </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+   <%= image_tag Product.find(params[:product_id]).image_url %>
+ </div>
+ <div class="col-sm-5 pull-down">
+   <p><%= Product.find(params[:product_id]).description %></p>
+   <p class="biggerNumber"><%= number_to_currency(Product.find(params[:product_id]).value) %></p> 
+ </div>
+</div>
+<div style="margin-bottom:40px;"></div>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-4">
+    <div class="credit-card-input no-js" id="skeuocard">
+      <p class="no-support-warning">
+        Either you have Javascript disabled, or you're using an unsupported browser, amigo! That's why you're seeing this old-school credit card input form instead of a fancy new Skeuocard. On the other hand, at least you know it gracefully degrades...
+      </p>
+      <label for="cc_type">Card Type</label>
+      <select name="cc_type">
+        <option value="">...</option>
+        <option value="visa">Visa</option>
+        <option value="discover">Discover</option>
+        <option value="mastercard">MasterCard</option>
+        <option value="maestro">Maestro</option>
+        <option value="jcb">JCB</option>
+        <option value="unionpay">China UnionPay</option>
+        <option value="amex">American Express</option>
+        <option value="dinersclubintl">Diners Club</option>
+      </select>
+      <label for="cc_number">Card Number</label>
+      <input type="text" name="cc_number" id="cc_number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" size="19">
+      <label for="cc_exp_month">Expiration Month</label>
+      <input type="text" name="cc_exp_month" id="cc_exp_month" placeholder="00">
+      <label for="cc_exp_year">Expiration Year</label>
+      <input type="text" name="cc_exp_year" id="cc_exp_year" placeholder="00">
+      <label for="cc_name">Cardholder's Name</label>
+      <input type="text" name="cc_name" id="cc_name" placeholder="John Doe">
+      <label for="cc_cvc">Card Validation Code</label>
+      <input type="text" name="cc_cvc" id="cc_cvc" placeholder="123" maxlength="3" size="3">
     </div>
-  <% end %>
+  </div>
+</div>
+<div style="margin-bottom:80px;"></div>
+<div class="row">
+  <div class="pull-left">
+    <%= link_to event_path(params[:event_id]), class:"btn btn-default" do %>
+     Voltar 
+    <% end %>
 
-    <%= f.text_field :user_id, style: "display:none;" %>
-    <%= f.text_field :event_id, style: "display:none;" %>
-    <%= f.text_field :product_id, style: "display:none;" %>
-
-    <div class="row">
-      <div class="pull-right">
-       <span class="glyphicon glyphicon-lock"></span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-       <%= image_tag Product.find(params[:product_id]).image_url, class: "thumbnail" %>
-      </div>
-      <div class="col-sm-5">
-       <p><%= Product.find(params[:product_id]).description %></p>
-       <p class="biggerNumber"><%= number_to_currency(Product.find(params[:product_id]).value) %></p> 
-      </div>
-    </div>
-      <div class="row">
-          <div class="credit-card-input no-js" id="skeuocard">
-            <p class="no-support-warning">
-              Either you have Javascript disabled, or you're using an unsupported browser, amigo! That's why you're seeing this old-school credit card input form instead of a fancy new Skeuocard. On the other hand, at least you know it gracefully degrades...
-            </p>
-            <label for="cc_type">Card Type</label>
-            <select name="cc_type">
-              <option value="">...</option>
-              <option value="visa">Visa</option>
-              <option value="discover">Discover</option>
-              <option value="mastercard">MasterCard</option>
-              <option value="maestro">Maestro</option>
-              <option value="jcb">JCB</option>
-              <option value="unionpay">China UnionPay</option>
-              <option value="amex">American Express</option>
-              <option value="dinersclubintl">Diners Club</option>
-            </select>
-            <label for="cc_number">Card Number</label>
-            <input type="text" name="cc_number" id="cc_number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" size="19">
-            <label for="cc_exp_month">Expiration Month</label>
-            <input type="text" name="cc_exp_month" id="cc_exp_month" placeholder="00">
-            <label for="cc_exp_year">Expiration Year</label>
-            <input type="text" name="cc_exp_year" id="cc_exp_year" placeholder="00">
-            <label for="cc_name">Cardholder's Name</label>
-            <input type="text" name="cc_name" id="cc_name" placeholder="John Doe">
-            <label for="cc_cvc">Card Validation Code</label>
-            <input type="text" name="cc_cvc" id="cc_cvc" placeholder="123" maxlength="3" size="3">
-          </div>
-
-        </div>
-   
-  <div class="actions">
-    <%= button_tag(type: "submit", class: "btn btn-success") do %>
-              <i class="glyphicon glyphicon-heart"></i>Contribuir 
+  </div>
+  <div class="pull-right">
+    <%= button_tag(type: "submit", class: "btn btn-success",id:"contribuir") do %>
+    <i class="glyphicon glyphicon-heart"></i>Contribuir 
     <% end %>
   </div>
+</div> 
 <% end %>
