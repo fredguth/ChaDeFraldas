@@ -20,7 +20,6 @@
 //= require_tree .
 
 $(document).ready(function() {
-	console.log("a");
         $('[data-toggle=offcanvas]').click(function() {
           $('.row-offcanvas').toggleClass('active');
         });
