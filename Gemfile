@@ -73,6 +73,8 @@ gem 'rename'
 
 gem 'wicked'
 
+gem 'redis'
+
 group :production do
   gem 'rails_12factor'
   gem 'rails-i18n'

@@ -3,5 +3,6 @@ class Invitation < ActiveRecord::Base
   serialize :list, Hash
 
 
+  
 
 end

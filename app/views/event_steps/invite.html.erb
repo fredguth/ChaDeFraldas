@@ -13,10 +13,11 @@
   </div>
   
   <div class="friends_gallery">
-     <% current_user.get_friends.each do |friend|%>
+     <% friends = current_user.get_friends %>
+     <% friends.each do |friend|%>
       <div class="friend">
-        <%= check_box_tag friend["uid"], true, class: "invitee-item"%>
-        <%= image_tag friend["pic_square"], class: "img-circle img-avatar" %>
+        <%= check_box_tag "friend_uids[]",friend["uid"], true, class: "invitee-item"%>
+        <%= image_tag  friend["pic_square"], class: "img-circle img-avatar" %>
         <%= friend["name"] %>
       </div>
       <%end%>    

@@ -10,6 +10,11 @@ include Wicked::Wizard
   def update
 	  @event = current_event
 	  @event.update_attributes(params[:event])
+
+    if params[:friend_uids]
+      binding.pry
+      @event.invite(*params[:friend_uids])
+    end
     @event.save
 	  render_wizard @event
   end
