@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all.text_search(params[:query]).order("created_at DESC").page(params[:page]).per(20)
   end
 
   # GET /events/1

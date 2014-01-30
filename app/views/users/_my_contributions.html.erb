@@ -8,7 +8,7 @@
 					<td>
 						<%= link_to contribution.event.name, contribution.event%>
 					</td>
-					<td style="text-align:right;">R$ 45,90</td>
+					<td style="text-align:right;"><%= number_to_currency(contribution.product.value) if contribution.product%></td>
 				</tr>
 				<%end%>
 			</tbody>

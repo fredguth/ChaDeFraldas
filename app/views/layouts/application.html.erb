@@ -4,7 +4,7 @@
   
   <body id="<%= @current_page %>">
 
-  <div class="page-container">
+  <div id="wrap">
     <%= render "layouts/menu" unless @skip_menu %> 
       <% if @skip_format %>
         <%= yield %>
@@ -22,11 +22,13 @@
           </div>
         </div>
       <% end %>
-     <%= render "layouts/footer" %>
+   </div>
+  <div class="push"></div>
+  <%= render "layouts/footer" %>
     
     <%= yield :scripts %>
 
 
-  </div>
+ 
   </body>
 </html>

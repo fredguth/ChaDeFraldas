@@ -8,6 +8,16 @@
 </div>
 <div class="row">
     <div class="col-sm-6">
+        <h3>Últimos Chás de Fraldas criados</h3>
+        <% Event.all.order("created_at DESC").limit(4).each do |event|%>
+            <p>
+                <%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small"  %>
+                <span class="contributor"><%= event.user.name%>:</span> 
+                <%= link_to event.name, event%>
+            </p>
+        <%end%>
+    </div>
+    <div class="col-sm-6">
         <h3>Chás de Fraldas de Amigos</h3>
         <p><%= image_tag current_user.get_picture(type:"small"),class: "img-circle img-small"  %>
         <span class="contributor">Renata Fernandes:</span> 
@@ -26,14 +36,5 @@
             <a href="#">Ana Lúcia Ferreira e Souza</a>
         </p>
     </div>
-    <div class="col-sm-6">
-        <h3>Últimos Chás de Fraldas criados</h3>
-        <% Event.all.order("created_at DESC").limit(4).each do |event|%>
-            <p>
-                <%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small"  %>
-                <span class="contributor"><%= event.user.name%>:</span> 
-                <%= link_to event.name, event%>
-            </p>
-        <%end%>
-    </div>
+   
 </div>
