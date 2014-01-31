@@ -18,14 +18,17 @@
         <%end%>
     </div>
     <div class="col-sm-6">
-        <h3>Chás de Fraldas de Amigos</h3>
         <% event_ids = Event.event_ids_by_uid(current_user.uid)%>
-        <% event_ids.each do |e|%>
-        <% event = Event.find(e)%>    
-        <p><%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small"  %>
-        <span class="contributor"><%= event.user.name%>:</span> 
-            <%= link_to event.name, event %>
-        </p>
+        <% if event_ids.size >0 %>
+            <h3>Chás de Fraldas de Amigos</h3>
+            
+            <% event_ids.each do |e|%>
+                <% event = Event.find(e)%>    
+                <p><%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small"  %>
+                <span class="contributor"><%= event.user.name%>:</span> 
+                    <%= link_to event.name, event %>
+                </p>
+            <%end%>
         <%end%>
     </div> 
    

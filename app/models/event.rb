@@ -27,6 +27,7 @@ class Event < ActiveRecord::Base
         $redis.sadd("evt:#{self.id}", uid)
         $redis.sadd("uid:#{uid}", self.id)
       end  
+      $redis.BGSAVE
   end
 
   def invite (*array)#array of users uids
@@ -36,7 +37,8 @@ class Event < ActiveRecord::Base
         array.each do |uid|
           $redis.sadd("uid:#{uid}", self.id)
         end
-      end 
+      end
+      $redis.BGSAVE 
   end
     
 

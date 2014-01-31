@@ -23,7 +23,9 @@
 	<div class="well">
 		<div class="row">
 			<div class="col-sm-4 centralize">
-				<p class="bignumber">131</p>
+				<p class="bignumber">
+				<%= Event.uids_by_event_id(event.id).size %>
+				</p>
 				<p>Amigos convidados</p>
 			</div>
 			<div class="col-sm-4 centralize">
