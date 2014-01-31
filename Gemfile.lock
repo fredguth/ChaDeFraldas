@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/fredguth/skeuocard-rails.git
-  revision: 5aec932e38605ca06995d484089bdee42452b468
+  revision: 9eb0eccc1eeb0bdfd0248c23ac888db5dd54b6f9
   specs:
     skeuocard-rails (1.0.3)
       railties (>= 3.1.0)

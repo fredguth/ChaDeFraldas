@@ -32,33 +32,123 @@
 <div style="margin-bottom:40px;"></div>
 <div class="row">
   <div class="col-sm-8 col-sm-offset-4">
-    <div class="credit-card-input no-js" id="skeuocard">
-      <p class="no-support-warning">
-        Either you have Javascript disabled, or you're using an unsupported browser, amigo! That's why you're seeing this old-school credit card input form instead of a fancy new Skeuocard. On the other hand, at least you know it gracefully degrades...
-      </p>
-      <label for="cc_type">Card Type</label>
-      <select name="cc_type">
-        <option value="">...</option>
-        <option value="visa">Visa</option>
-        <option value="discover">Discover</option>
-        <option value="mastercard">MasterCard</option>
-        <option value="maestro">Maestro</option>
-        <option value="jcb">JCB</option>
-        <option value="unionpay">China UnionPay</option>
-        <option value="amex">American Express</option>
-        <option value="dinersclubintl">Diners Club</option>
-      </select>
-      <label for="cc_number">Card Number</label>
-      <input type="text" name="cc_number" id="cc_number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" size="19">
-      <label for="cc_exp_month">Expiration Month</label>
-      <input type="text" name="cc_exp_month" id="cc_exp_month" placeholder="00">
-      <label for="cc_exp_year">Expiration Year</label>
-      <input type="text" name="cc_exp_year" id="cc_exp_year" placeholder="00">
-      <label for="cc_name">Cardholder's Name</label>
-      <input type="text" name="cc_name" id="cc_name" placeholder="John Doe">
-      <label for="cc_cvc">Card Validation Code</label>
-      <input type="text" name="cc_cvc" id="cc_cvc" placeholder="123" maxlength="3" size="3">
-    </div>
+    <!-- START CREDIT CARD -->
+    <div class="form-group">
+            <label>Nome do Titular <small>(idêntico ao do cartão)</small></label>
+            <div class="controls">
+              <input type="text" class="form-control" pattern="\w+ \w+.*" title="Nome do Titular (idêntico ao do cartão)"  oninvalid="setCustomValidity('Digite o nome idêntico ao cartão')"
+    onchange="try{setCustomValidity('')}catch(e){}" required>
+            </div>
+          </div>
+       
+          <div class="form-group">
+            <label>Número do cartão</label>
+            <div class="controls">
+              <div class="row">
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Primeiros quatro dígitos"  oninvalid="setCustomValidity('Primeiros quatro dígitos')"
+    onchange="try{setCustomValidity('')}catch(e){}" required>
+                </div>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Segundos quatro dígitos"  oninvalid="setCustomValidity('Segundos quatro dígitos')"
+    onchange="try{setCustomValidity('')}catch(e){}" required>
+                </div>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Terceiros quatro dígitos" oninvalid="setCustomValidity('Terceiros quatro dígitos')"
+    onchange="try{setCustomValidity('')}catch(e){}"  required>
+                </div>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Quartos quatro dígitos" oninvalid="setCustomValidity('Quartos quatro dígitos')"
+    onchange="try{setCustomValidity('')}catch(e){}"  required>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+          <div class="form-group">
+            <label>Validade</label>
+            <div class="controls">
+              <div class="row">
+                <div class="col-sm-9">
+                  <select class="form-control">
+                    <option>Mês</option>
+                    <option>Janeiro</option>
+                    <option>Fevereiro</option>
+                    <option>Março</option>
+                    <option>Abril</option>
+                    <option>Maio</option>
+                    <option>Junho</option>
+                    <option>Julho</option>
+                    <option>Agosto</option>
+                    <option>Setembro</option>
+                    <option>Outubro</option>
+                    <option>Novembro</option>
+                    <option>Dezembro</option>
+                  </select>
+                </div>
+                <div class="col-sm-3">
+                  <select class="form-control">
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+          <div class="form-group">
+            <label>Código de Segurança <small>(CVV)</small></label>
+            <div class="controls">
+              <div class="row">
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Três dígitos no verso do seu cartão"  oninvalid="setCustomValidity('Três dígitos')"
+    onchange="try{setCustomValidity('')}catch(e){}" required>
+                </div>
+                <div class="col-sm-8">
+                  <!-- screenshot may be here -->
+                </div>
+              </div>
+            </div>
+          </div>
+    <!-- END CREDIT CARD -->
+    <!-- START FORM 
+        
+          <div class="credit-card-input no-js" id="skeuocard">
+            <p class="no-support-warning">
+              Either you have Javascript disabled, or you're using an unsupported browser, amigo! That's why you're seeing this old-school credit card input form instead of a fancy new Skeuocard. On the other hand, at least you know it gracefully degrades...
+              <br />
+              <a href="#" id="enable-anyway-btn">Never tell me the odds! Enable it anyway.</a>
+            </p>
+            <label for="cc_type">Card Type</label>
+            <select name="cc_type">
+              <option value="">...</option>
+              <option value="visa">Visa</option>
+              <option value="discover">Discover</option>
+              <option value="mastercard">MasterCard</option>
+              <option value="maestro">Maestro</option>
+              <option value="jcb">JCB</option>
+              <option value="unionpay">China UnionPay</option>
+              <option value="amex">American Express</option>
+              <option value="dinersclubintl">Diners Club</option>
+            </select>
+            <label for="cc_number">Card Number</label>
+            <input type="text" name="cc_number" id="cc_number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" size="19">
+            <label for="cc_exp_month">Expiration Month</label>
+            <input type="text" name="cc_exp_month" id="cc_exp_month" placeholder="00">
+            <label for="cc_exp_year">Expiration Year</label>
+            <input type="text" name="cc_exp_year" id="cc_exp_year" placeholder="00">
+            <label for="cc_name">Cardholder's Name</label>
+            <input type="text" name="cc_name" id="cc_name" placeholder="John Doe">
+            <label for="cc_cvc">Card Validation Code</label>
+            <input type="text" name="cc_cvc" id="cc_cvc" placeholder="123" maxlength="3" size="3">
+          </div>
+
+        <!-- END FORM --> 
   </div>
 </div>
 <div style="margin-bottom:80px;"></div>

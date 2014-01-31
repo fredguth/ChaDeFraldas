@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require skeuocard
+//                             require skeuocard
 //= require bootstrap.min
 //= require jquery.nested-fields
 //= require jquery_nested_form
 //= require select2
 //= require_tree .
+//= require_self
 
 $(document).ready(function() {
         $('[data-toggle=offcanvas]').click(function() {

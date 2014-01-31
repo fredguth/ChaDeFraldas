@@ -12,7 +12,6 @@ include Wicked::Wizard
 	  @event.update_attributes(params[:event])
 
     if params[:friend_uids]
-      binding.pry
       @event.invite(*params[:friend_uids])
     end
     @event.save

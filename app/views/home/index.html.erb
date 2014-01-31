@@ -19,22 +19,14 @@
     </div>
     <div class="col-sm-6">
         <h3>Chás de Fraldas de Amigos</h3>
-        <p><%= image_tag current_user.get_picture(type:"small"),class: "img-circle img-small"  %>
-        <span class="contributor">Renata Fernandes:</span> 
-            <a href="#">Chá de Fraldas do Bruninho</a>
+        <% event_ids = Event.event_ids_by_uid(current_user.uid)%>
+        <% event_ids.each do |e|%>
+        <% event = Event.find(e)%>    
+        <p><%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small"  %>
+        <span class="contributor"><%= event.user.name%>:</span> 
+            <%= link_to event.name, event %>
         </p>
-        <p><%= image_tag current_user.get_picture(type:"small"),class: "img-circle img-small"  %>
-        <span class="contributor">Marina Lima:</span> 
-            <a href="#">Chá da Lilica</a>
-        </p>
-        <p><%= image_tag current_user.get_picture(type:"small"),class: "img-circle img-small"  %>
-        <span class="contributor">Roberta Fagundes:</span> 
-            <a href="#">Mimos para o Pedro</a>
-        </p>
-        <p><%= image_tag current_user.get_picture(type:"small"),class: "img-circle img-small"  %>
-        <span class="contributor">Lilian Ribeiro:</span> 
-            <a href="#">Ana Lúcia Ferreira e Souza</a>
-        </p>
-    </div>
+        <%end%>
+    </div> 
    
 </div>
