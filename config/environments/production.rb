@@ -77,4 +77,13 @@ ChaDeFraldas::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+    :login => "us-store_api1.fredguth.com",
+    :password => "1391218560",
+    :signature =>"AiPC9BjkCyDFQXbSkoZcgqH3hpacAitAafBewAfSmrtpIdgwOc1FLuzd"
+
+    )
+  end
 end

@@ -30,6 +30,8 @@ gem 'nested_form'
 gem 'seed_dump'
 gem "select2-rails"
 gem 'skeuocard-rails',:git => "https://github.com/fredguth/skeuocard-rails.git"
+#gem 'braspag',:git =>"https://github.com/Codeminer42/braspag_ruby.git"
+gem 'activemerchant',:git => 'https://github.com/fredguth/active_merchant.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

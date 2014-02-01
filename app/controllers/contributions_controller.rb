@@ -16,9 +16,7 @@ class ContributionsController < ApplicationController
   def new
     @current_page = "contribution"
     @contribution = Contribution.new(params[:contribution])
-    @contribution.user_id = params[:user_id]
-    @contribution.event_id = params[:event_id]
-    @contribution.product_id = params[:product_id]
+
   end
 
   # GET /contributions/1/edit
@@ -29,11 +27,19 @@ class ContributionsController < ApplicationController
   # POST /contributions.json
   def create
     @contribution = Contribution.new(params[:contribution])
-     respond_to do |format|
+
+    temp = params[:contribution][:card_number]
+    @contribution.card_number = temp["first"]+temp["second"]+temp["third"]+temp["forth"]
+    @contribution.ip = request.remote_ip
+    respond_to do |format|
+     
+     #if @contribution.save
      if @contribution.purchase && @contribution.save
         format.html {
-         @current_page="success"
-         render :action => "success",:params =>params[:contribution]
+        #url="https://qpmiwsiqjj.localtunnel.me/payment_notifications"
+        # redirect_to @contribution.paypal_url(url+"/confirmation",url)
+        @current_page="success"
+        render action: 'success',:params =>params[:contribution]
         }
         format.json { render action: 'show', status: :created, location: @contribution }
       else
@@ -45,6 +51,7 @@ class ContributionsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /contributions/1
   # PATCH/PUT /contributions/1.json
@@ -78,6 +85,6 @@ class ContributionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contribution_params
-      params.require(:contribution).permit(:user_id, :event_id,:product_id)
+      params.require(:contribution).permit(:user_id, :event_id,:product_id,:holder, :expires_on, :cvc)
     end
 end

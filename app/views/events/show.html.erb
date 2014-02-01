@@ -13,15 +13,34 @@
 <div class="well">
 	<div class="row">
 		<% @event.products.each do |p| %>
-		<div class="col-sm-4 <%= "border_right" unless p==@event.products.last%> centralize">
+			<div class="col-sm-4 <%= "border_right" unless p==@event.products.last%> centralize">
 			<h4><%= p.name %></h4>
 			<%= image_tag p.image_url, class: "produto" %>
 			<p><%= p.description %></p>
 			<p class="price"><%= number_to_currency(p.value) %></p>
-			<p><%= link_to new_contribution_path(:user_id =>current_user.id, :event_id =>@event.id, :product_id =>p.id), class:"btn btn-success" do %>
-              <i class="glyphicon glyphicon-heart"></i> Contribuir 
-              <% end %></p>
-		</div>
+			<p>
+			<!-- PAYPAL 
+			<% url = url_for({:controller => "contributions",:action => "create",
+				:params =>{:contribution=>{
+						:user_id => current_user.id,
+						:event_id=> @event.id,
+						:product_id=> p.id}
+					
+				}})%>
+			
+			<%= link_to url,{:method => :post, :class => "btn btn-success"} do %><%end%>-->
+			<% url = url_for({:controller => "contributions",:action => "new",
+				:params =>{:contribution=>{
+						:user_id => current_user.id,
+						:event_id=> @event.id,
+						:product_id=> p.id}
+					
+				}})%>		
+			<%= link_to url, class: "btn btn-success" do %>
+				<i class="glyphicon glyphicon-heart"></i> Contribuir 
+			<% end %> 
+			</p>
+			</div>
 		<%end%>
 		
 	</div>

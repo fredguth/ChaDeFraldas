@@ -3,8 +3,7 @@
   <div class="col-sm-8">
   	<p class="triangle-isosceles right">
   	Não foi possível efetuar a contribuição.
-  	Por favor, tente novamente.
-  	</p>
+  	Por favor, tente novamente.  	</p>
   </div>
   <div class="col-sm-2"> 
   	<p><%= image_tag "caixa.png" %></p>
@@ -12,5 +11,5 @@
   <div class="col-sm-2"></div>
 </div>
 <div class="row pull-right">
-<%=link_to "Tentar de Novo", new_contribution_path(params[:contribution]),class: "btn btn-default"%>
+<%=link_to "Tentar de Novo", new_contribution_path(:contribution =>params[:contribution]),class: "btn btn-default"%>
 </div>

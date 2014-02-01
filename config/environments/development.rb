@@ -28,4 +28,13 @@ ChaDeFraldas::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+    :login => "us-store_api1.fredguth.com",
+    :password => "1391218560",
+    :signature =>"AiPC9BjkCyDFQXbSkoZcgqH3hpacAitAafBewAfSmrtpIdgwOc1FLuzd"
+
+    )
+  end
 end

@@ -1,7 +1,10 @@
 ChaDeFraldas::Application.routes.draw do
  
 
-  get "confirmations/show"
+  match 'payment_notifications/confirmation' => 'payment_notifications#confirmation', via: [:get,:post]
+  match 'payment_notifications' => 'payment_notifications#create', via: [:get,:post]
+
+  
   resources :selections
 
   resources :products

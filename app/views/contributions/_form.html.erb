@@ -10,7 +10,7 @@
   </ul>
 </div>
 <% end %>
-
+<!-- acho que nõa é mais necessário isso abaixo -->
 <%= f.text_field :user_id, style: "display:none;" %>
 <%= f.text_field :event_id, style: "display:none;" %>
 <%= f.text_field :product_id, style: "display:none;" %>
@@ -22,21 +22,22 @@
 </div>
 <div class="row">
   <div class="col-sm-4">
-   <%= image_tag Product.find(params[:product_id]).image_url %>
+   <%= image_tag Product.find(params[:contribution][:product_id]).image_url %>
  </div>
  <div class="col-sm-5 pull-down">
-   <p><%= Product.find(params[:product_id]).description %></p>
-   <p class="biggerNumber"><%= number_to_currency(Product.find(params[:product_id]).value) %></p> 
+   <p><%= Product.find(params[:contribution][:product_id]).description %></p>
+   <p class="biggerNumber"><%= number_to_currency(Product.find(params[:contribution][:product_id]).value) %></p> 
  </div>
 </div>
 <div style="margin-bottom:40px;"></div>
 <div class="row">
   <div class="col-sm-8 col-sm-offset-4">
-    <!-- START CREDIT CARD -->
+    <!-- START CREDIT CARD -->  
+
     <div class="form-group">
             <label>Nome do Titular <small>(idêntico ao do cartão)</small></label>
             <div class="controls">
-              <input type="text" class="form-control" pattern="\w+ \w+.*" title="Nome do Titular (idêntico ao do cartão)"  oninvalid="setCustomValidity('Digite o nome idêntico ao cartão')"
+              <input type="text"  name="contribution[holder]" class="form-control" pattern="\w+ \w+.*" title="Nome do Titular (idêntico ao do cartão)"  oninvalid="setCustomValidity('Digite o nome idêntico ao cartão')"
     onchange="try{setCustomValidity('')}catch(e){}" required>
             </div>
           </div>
@@ -46,19 +47,19 @@
             <div class="controls">
               <div class="row">
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Primeiros quatro dígitos"  oninvalid="setCustomValidity('Primeiros quatro dígitos')"
+                  <input type="text" name="contribution[card_number][first]" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Primeiros quatro dígitos"  oninvalid="setCustomValidity('Primeiros quatro dígitos')"
     onchange="try{setCustomValidity('')}catch(e){}" required>
                 </div>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Segundos quatro dígitos"  oninvalid="setCustomValidity('Segundos quatro dígitos')"
+                  <input type="text" name="contribution[card_number][second]" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Segundos quatro dígitos"  oninvalid="setCustomValidity('Segundos quatro dígitos')"
     onchange="try{setCustomValidity('')}catch(e){}" required>
                 </div>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Terceiros quatro dígitos" oninvalid="setCustomValidity('Terceiros quatro dígitos')"
+                  <input type="text" name="contribution[card_number][third]" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Terceiros quatro dígitos" oninvalid="setCustomValidity('Terceiros quatro dígitos')"
     onchange="try{setCustomValidity('')}catch(e){}"  required>
                 </div>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Quartos quatro dígitos" oninvalid="setCustomValidity('Quartos quatro dígitos')"
+                  <input type="text" name="contribution[card_number][forth]" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Quartos quatro dígitos" oninvalid="setCustomValidity('Quartos quatro dígitos')"
     onchange="try{setCustomValidity('')}catch(e){}"  required>
                 </div>
               </div>
@@ -66,39 +67,12 @@
           </div>
        
           <div class="form-group">
-            <label>Validade</label>
-            <div class="controls">
-              <div class="row">
-                <div class="col-sm-9">
-                  <select class="form-control">
-                    <option>Mês</option>
-                    <option>Janeiro</option>
-                    <option>Fevereiro</option>
-                    <option>Março</option>
-                    <option>Abril</option>
-                    <option>Maio</option>
-                    <option>Junho</option>
-                    <option>Julho</option>
-                    <option>Agosto</option>
-                    <option>Setembro</option>
-                    <option>Outubro</option>
-                    <option>Novembro</option>
-                    <option>Dezembro</option>
-                  </select>
-                </div>
-                <div class="col-sm-3">
-                  <select class="form-control">
-                    <option>2014</option>
-                    <option>2015</option>
-                    <option>2016</option>
-                    <option>2017</option>
-                    <option>2018</option>
-                    <option>2019</option>
-                    <option>2020</option>
-                  </select>
-                </div>
-              </div>
+          <%= f.label :expires_on, "Validade" %>
+          <div class="row">
+            <div class="col-sm-4">
+              <%= f.date_select :expires_on, {:discard_day =>true,:start_year =>Date.today.year,:end_year => (Date.today.year+10), :add_month_numbers =>true},  :class=>"form-control"%>
             </div>
+          </div>
           </div>
        
           <div class="form-group">
@@ -106,11 +80,11 @@
             <div class="controls">
               <div class="row">
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Três dígitos no verso do seu cartão"  oninvalid="setCustomValidity('Três dígitos')"
+                  <input type="text"  name="contribution[cvc]" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Três dígitos no verso do seu cartão"  oninvalid="setCustomValidity('Três dígitos')"
     onchange="try{setCustomValidity('')}catch(e){}" required>
                 </div>
                 <div class="col-sm-8">
-                  <!-- screenshot may be here -->
+                  <!-- screenshot may be here --> 
                 </div>
               </div>
             </div>
@@ -154,7 +128,7 @@
 <div style="margin-bottom:80px;"></div>
 <div class="row">
   <div class="pull-left">
-    <%= link_to event_path(params[:event_id]), class:"btn btn-default" do %>
+    <%= link_to event_path(params[:contribution][:event_id]), class:"btn btn-default" do %>
      Voltar 
     <% end %>
 
