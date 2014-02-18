@@ -6,16 +6,17 @@ class Contribution < ActiveRecord::Base
 
   def purchase
   	order_id = self.id
-   	@response = GATEWAY.purchase(price_in_cents, credit_card, :order_id =>self.id,:ip => ip)
-   	self.purchased_at = Time.now if @response.success?
-    @response.success?
+   	response = GATEWAY.purchase(price_in_cents, credit_card, :order_id =>self.id,:ip => ip)
+ 
+    self.purchased_at = Time.now if response.success?
+    response.success?
    end
 
    def purchased?
    	 return purchased_at
    end
   def price_in_cents
-    (product.value*100).round
+    (product.value*quantity*100).round
   end
   def credit_card
     @credit_card ||= ActiveMerchant::Billing::CreditCard.new(

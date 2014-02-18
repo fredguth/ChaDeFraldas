@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates_presence_of :email, :uid
+  validates_uniqueness_of :email, :uid
   has_many :events
   attr_accessible :get_friends_who_like
 
@@ -55,6 +55,9 @@ def facebook
   @facebook||=Koala::Facebook::API.new(oauth_token)
 end
 
+def public_facebook
+  @public_facebook||=Koala::Facebook::API.new
+end
 def get_friends
   self.facebook.fql_query("SELECT name, pic_square,uid FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1=me())")
 end
@@ -70,13 +73,13 @@ def get_friends_who_like(page)
   end 
 end
 
-def get_picture(options={})
+def get_picture(options={})#public facebook access
   options[:type]||="square"
-  self.facebook.get_picture('me', { :type => options[:type]})
+  public_facebook.get_picture(self.uid, { :type => options[:type]})
 
 end
 def get_gender
-  self.facebook.get_object('me')["gender"]
+  public_facebook.get_object(self.uid)["gender"]
 end
 
 def self.share_blog_registration(user_id, blog_url)

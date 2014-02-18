@@ -18,13 +18,14 @@ ChaDeFraldas::Application.routes.draw do
   match "terms", to: 'info#terms', via: [:get, :post]
   match "privacy", to: 'info#privacy', via: [:get, :post]
   match "contact", to: 'info#contact', via: [:get, :post]
+  match "unauthorized", to: 'info#unauthorized', via: [:get, :post]
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "omniauth_callbacks", sessions: "sessions"}
   resources :users
 
   
-  # match 'tags/:tag', to: 'blogs#index', as: :tag, via: [:get, :post]
+   match 'events/:id', to: 'events#show', via: [:get, :post]
+   match 'products/:id/edit', to: 'products#edit', via: [:get, :post]
   # resources :tags, only: :index
   
   # resources :blogs do

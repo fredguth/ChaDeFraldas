@@ -15,6 +15,7 @@
 <%= f.text_field :event_id, style: "display:none;" %>
 <%= f.text_field :product_id, style: "display:none;" %>
 
+
 <div class="row">
   <div class="pull-right push-down">
    <i class="glyphicon glyphicon-lock"></i>
@@ -24,9 +25,9 @@
   <div class="col-sm-4">
    <%= image_tag Product.find(params[:contribution][:product_id]).image_url %>
  </div>
- <div class="col-sm-5 pull-down">
-   <p><%= Product.find(params[:contribution][:product_id]).description %></p>
-   <p class="biggerNumber"><%= number_to_currency(Product.find(params[:contribution][:product_id]).value) %></p> 
+ <div class="col-sm-7 pull-down">
+   <p><%= params[:contribution][:quantity]+" X "+Product.find(params[:contribution][:product_id]).description %></p>
+   <p class="biggerNumber"><%= number_to_currency((Product.find(params[:contribution][:product_id]).value)* params[:contribution][:quantity].to_f)%></p> 
  </div>
 </div>
 <div style="margin-bottom:40px;"></div>

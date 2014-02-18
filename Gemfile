@@ -15,7 +15,7 @@ gem 'therubyracer', :platform => :ruby
 
 gem "less-rails"
 
-gem 'jquery-ui-bootstrap-rails'
+gem 'jquery-ui-rails'
 
 gem "kaminari"
 

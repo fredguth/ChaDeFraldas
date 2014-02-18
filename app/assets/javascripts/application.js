@@ -16,6 +16,7 @@
 //= require bootstrap.min
 //= require jquery.nested-fields
 //= require jquery_nested_form
+//= require jquery.ui.all
 //= require select2
 //= require_tree .
 //= require_self

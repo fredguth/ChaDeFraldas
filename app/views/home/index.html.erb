@@ -11,6 +11,7 @@
         <h3>Últimos Chás de Fraldas criados</h3>
         <% Event.all.order("created_at DESC").limit(4).each do |event|%>
             <p>
+           
                 <%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small"  %>
                 <span class="contributor"><%= event.user.name%>:</span> 
                 <%= link_to event.name, event%>
@@ -23,7 +24,8 @@
             <h3>Chás de Fraldas de Amigos</h3>
             
             <% event_ids.each do |e|%>
-                <% event = Event.find(e)%>    
+                <% event = Event.find(e)%> 
+
                 <p><%= image_tag event.user.get_picture(type:"small"),class: "img-circle img-small"  %>
                 <span class="contributor"><%= event.user.name%>:</span> 
                     <%= link_to event.name, event %>

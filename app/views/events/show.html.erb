@@ -17,7 +17,8 @@
 			<h4><%= p.name %></h4>
 			<%= image_tag p.image_url, class: "produto" %>
 			<p><%= p.description %></p>
-			<p class="price"><%= number_to_currency(p.value) %></p>
+			<p class="price" data-price="<%=p.value%>"><%= number_to_currency(p.value) %></p>
+			<p>Quantidade: <input id="quantity" name="value" class="spinner"></p>
 			<p>
 			<!-- PAYPAL 
 			<% url = url_for({:controller => "contributions",:action => "create",
@@ -33,10 +34,11 @@
 				:params =>{:contribution=>{
 						:user_id => current_user.id,
 						:event_id=> @event.id,
-						:product_id=> p.id}
+						:product_id=> p.id
+						}
 					
 				}})%>		
-			<%= link_to url, class: "btn btn-success" do %>
+			<%= link_to "#", :"data-url"=> url, class: "btn btn-success" do %>
 				<i class="glyphicon glyphicon-heart"></i> Contribuir 
 			<% end %> 
 			</p>
