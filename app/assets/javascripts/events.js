@@ -10,10 +10,10 @@ var n = this,
  };
 $(function(){ 
 	
-       //$('.btn .btn-success').live('click', function(event){
-          //event.preventDefault();
-          //$.post($(this).attr('data-url') + "?contribution[quantity]=" + $(this).closest("div").find('.spinner').spinner().val(), function(data){} );
-        //});
+       $('div').on("click", "#button",function(event){
+          event.preventDefault();
+          window.location.href =($(this).attr('data-url') + "&contribution%5Bquantity%5D=" + $(this).closest("div").find('#quantity').val());
+        });
        $("#prosseguir").click(function(){
        	
         var selected = $(".product-item:checked").length;
