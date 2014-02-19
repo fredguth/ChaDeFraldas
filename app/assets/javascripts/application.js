@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//                             require skeuocard
+//= require skeuocard
 //= require bootstrap.min
 //= require jquery.nested-fields
 //= require jquery_nested_form
@@ -30,7 +30,7 @@ $(document).ready(function() {
  
  $(window).resize(function (){
      $("body").toggleClass("fbIframe", $(window).width() < 900);
-     console.log("aqui");
+     
  });
 
 

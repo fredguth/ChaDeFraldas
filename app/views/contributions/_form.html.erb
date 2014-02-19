@@ -10,12 +10,6 @@
   </ul>
 </div>
 <% end %>
-<!-- acho que nõa é mais necessário isso abaixo -->
-<%= f.text_field :user_id, style: "display:none;" %>
-<%= f.text_field :event_id, style: "display:none;" %>
-<%= f.text_field :product_id, style: "display:none;" %>
-
-
 <div class="row">
   <div class="pull-right push-down">
    <i class="glyphicon glyphicon-lock"></i>
@@ -31,10 +25,10 @@
  </div>
 </div>
 <div style="margin-bottom:40px;"></div>
-<div class="row">
+<div class="row"  id="credit_card">
   <div class="col-sm-8 col-sm-offset-4">
     <!-- START CREDIT CARD -->  
-
+<!--
     <div class="form-group">
             <label>Nome do Titular <small>(idêntico ao do cartão)</small></label>
             <div class="controls">
@@ -85,13 +79,13 @@
     onchange="try{setCustomValidity('')}catch(e){}" required>
                 </div>
                 <div class="col-sm-8">
-                  <!-- screenshot may be here --> 
+                  <!-- screenshot may be here 
                 </div>
               </div>
             </div>
           </div>
-    <!-- END CREDIT CARD -->
-    <!-- START FORM 
+    <!-- END CREDIT CARD --> 
+    <!-- START FORM  -->
         
           <div class="credit-card-input no-js" id="skeuocard">
             <p class="no-support-warning">
