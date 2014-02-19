@@ -3,12 +3,12 @@
 			<tbody>
 				<% Contribution.all.where(:user =>current_user).order("created_at DESC").each do |contribution| %>
 				<tr>
-					<td><%=contribution.created_at.strftime("%H:%M")%></td>
-					<td><%=contribution.created_at.strftime("%d %b. %Y")%></td>
+					<td><%= l(contribution.created_at, :format=>"%H:%M")%></td>
+					<td><%= l(contribution.created_at, :format=>"%d %b. %Y")%></td>
 					<td>
 						<%= link_to contribution.event.name, contribution.event%>
 					</td>
-					<td style="text-align:right;"><%= number_to_currency(contribution.product.value) if contribution.product%></td>
+					<td style="text-align:right;"><%= number_to_currency(contribution.product.value*contribution.quantity) if contribution.product%></td>
 				</tr>
 				<%end%>
 			</tbody>

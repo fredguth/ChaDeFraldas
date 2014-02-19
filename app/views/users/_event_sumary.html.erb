@@ -45,13 +45,13 @@
 				
 				<% event.contributions.order("created_at DESC").each do |contribution| %>
 				<tr>
-					<td><%=contribution.created_at.strftime("%H:%M")%></td>
-					<td><%=contribution.created_at.strftime("%d %b. %Y")%></td>
+					<td><%=l(contribution.created_at, :format=>"%H:%M")%></td>
+					<td><%=l(contribution.created_at, :format=>"%d %b. %Y")%></td>
 					<td><%= image_tag contribution.user.get_picture(type:"small"),class: "img-circle img-small" %>
 					</td>
 					<td><%= contribution.user.name%></td>
 					<td>contribuiu com</td>
-					<td style="text-align:right;"><%= number_to_currency(contribution.product.value) if contribution.product%></td>
+					<td style="text-align:right;"><%= number_to_currency(contribution.product.value*contribution.quantity) if contribution.product%></td>
 					
 				</tr>
 				<%end%>

@@ -45,7 +45,7 @@ class Event < ActiveRecord::Base
    def contribution_sum
   	sum = 0
   	 self.contributions.each do |c|
-  		  sum+=c.product.value if c.product	
+  		  sum+=c.product.value*c.quantity if c.product	
   	 end
   	return sum
   end

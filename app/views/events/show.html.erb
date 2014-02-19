@@ -52,5 +52,5 @@
 <h3>Amigos que já contribuiram</h3>
 <% @event.contributions.each do |contribution| %>
 	<p><%= image_tag contribution.user.get_picture(type:"small"),class: "img-circle img-small"  %>	
-	<span class="contributor"><%=contribution.user.name%></span> Contribuiu com <%=contribution.product.description%></p>	
+	<span class="contributor"><%=contribution.user.name%></span> contribuiu.</p>	
 <%end%>
